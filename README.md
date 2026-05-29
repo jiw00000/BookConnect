@@ -1,28 +1,93 @@
-# 웹플랫폼응용 — KSU 글로컬 컬쳐 허브
+## BookConnect
+# 📄 BookConnect: 전공 e서적 학기 구독 플랫폼
 
-> 경성대학교 웹플랫폼응용 수업 프로젝트 | 학번: 2024664010 | 이름: 김지우
+> **대학생의 전공 서적 구매 부담을 완화하고 효율적인 디지털 도서 공유 생태계를 구축하는 웹 기반 학기 단위 구독 플랫폼**
 
 ---
 
-## 🌐 웹사이트 링크
+## 1. 프로젝트 정보 📅
+- **프로젝트 기간**: 2026.03.03 ~ 2026.05.22
+- **기획 및 작성자**: 2024664010 김지우
+
+---
+
+## 2. 프로젝트 배경 및 문제 정의 🎯
+
+### 2.1 기존 환경의 문제점 (AS-IS)
+- **과도한 경제적 부담**: 대학 전공 서적은 권당 평균 40,000원 이상의 고가로 책정되어 매 학기 학생들에게 큰 경제적 압박을 줍니다.
+- **도서관 자원의 한계**: 대학 도서관은 보유 수량이 한정되어 있어 시험 기간이나 학기 초에 대출 경쟁이 심화되며, 대출 기간이 짧아 학기 전체 학습에 활용하기 어렵습니다.
+- **학습 편의성 저하**: 무거운 실물 도서를 항상 지참해야 하는 불편함이 있으며, 도서관 도서는 필기나 훼손이 절대 금지되어 개인 학습 효율이 저하됩니다.
+
+### 2.2 서비스 해결책 (TO-BE)
+- **학기 단위 다중 구독 요금제**: 개별 도서 구매 대신 프리미엄, 스탠다드 등 합리적인 학기 단위(약 4개월) 구독 모델을 도입하여 비용을 획기적으로 절감합니다.
+- **제한 없는 디지털 대출**: 수량 제한이 없는 디지털 E북 환경을 구현하여 도서관의 자원 부족 문제를 완전히 해결하고 반납 압박이 없는 열람권을 보장합니다.
+- **스마트 학습 편의성**: 멀티 디바이스 N-Screen 지원을 통해 언제 어디서나 접속할 수 있으며, 클라우드 동기화 기반의 자유로운 디지털 필기(형광펜, 메모) 기능을 제공합니다.
+
+---
+
+## 3. 기능 구조도 (Feature Hierarchy) 🌿
+
+플랫폼의 전체 기능 상세 도메인 및 계층 구조는 아래와 같습니다.
+
+<img width="4200" height="3136" alt="feature-graph_2026-04-10 (1)" src="https://github.com/user-attachments/assets/d3cf1049-a33e-476f-9ac7-4ebaa01f24ee" />
+
+- **1. 회원 관리 및 재학생 인증**
+  - 대학교 이메일(.ac.kr) 인증 가입 (이메일 인증 흐름, 도메인 검증)
+  - 필수 개인정보 수집 및 계정 관리 (필수 정보 입력 및 유효성 검사, 프로필 조회)
+  - 역할 기반 접근 제어 (재학생/관리자 전용 페이지 접근 제한)
+- **2. 학기 구독 결제 및 권한 제어**
+  - 구독 플랜 선택 및 결제 (플랜 비교/선택 UI, 결제 결과 처리)
+  - 플랜별 열람 권수/기간 권한 엔진 (열람 가능 권수 초과 방지, 학기 종료일 기준 만료 처리)
+- **3. 대시보드 및 내 서재 (학습 현황)**
+  - 내 서재 대시보드 (구독 플랜 현황 및 만료일 D-Day 표시)
+  - 도서별 진도율 시각화 (도서 진도율 계산 및 프로그레스 바 UI)
+  - 진도/상태 클라우드 동기화 (이어보기 기능 및 최근 열람 위치 동기화)
+- **4. 전공 e서적 탐색 및 통합 검색**
+  - 통합 검색 (제목/저자/카테고리 필터 UI 및 결과 정렬)
+  - 검색 결과 내 상세 정보 확인 (도서 상세 페이지 제공, 내 서재 추가 로직)
+- **5. 스마트 e북 뷰어 및 필기 동기화**
+  - 브라우저 기반 전체화면 e북 뷰어 (무설치 HTML5 뷰어 구동, 전체화면 모드 UX)
+  - 목차 네비게이션 (목차 패널 및 챕터 이동 기능)
+  - 스마트 필기 및 동기화 (형광펜/메모 작성·수정·삭제, 필기 데이터 실시간 클라우드 동기화)
+- **6. DRM 보안 및 저작권 보호**
+  - 뷰어 보안 제어 (마우스 우클릭 및 복사 차단, 포커스 아웃 시 블랙아웃 처리)
+  - 불법 유출 방지 (화면 캡처/녹화/인쇄 단축키 시도 탐색 및 차단 이벤트)
+  - 사용자 식별 워터마크 렌더링 (이메일/학번 사선 워터마크 CSS 동적 생성 및 최적화)
+
+---
+
+## 4. 핵심 기능 명세 (Core Features) 💡
+
+| 기능 ID | 구분 | 핵심 명세 | 상세 내용 |
+| :--- | :--- | :--- | :--- |
+| **REQ-01** | 회원 관리 | 대학교 이메일 인증 | - `.ac.kr` 메일 인증을 통한 재학생 본인 확인 가입 및 학생 신분 DB 연동<br>- 일반 학생과 플랫폼 관리자로 역할(Role) 부여 및 관리 |
+| **REQ-02** | 결제/구독 | 4단계 구독 플랜 | 학기 단위의 맞춤형 다중 요금제 제공<br>- **Premium**: 전 도서 무제한 접근<br>- **Standard**: 전공 핵심 과목 대응 (6권)<br>- **Basic**: 선택 과목 보조 (3권)<br>- **Single**: 단일 과목용 (1권) |
+| **REQ-03** | 대시보드 | 스마트 서재 관리 | - 현재 구독 플랜 현황 및 학기 종료일 기준 D-Day 계산 시각화<br>- 열람 도서별 학습 진도율 프로그레스 바 표시 및 클라우드 자동 동기화 |
+| **REQ-04** | 탐색 | 스마트 필터 검색 | - 제목, 저자, 카테고리 기반의 전공 서적 통합 검색 환경 제공<br>- 원하는 전공 개념을 한 번에 찾을 수 있는 통합 탐색 필터 구현 |
+| **REQ-05** | 뷰어 | 지능형 e북 뷰어 | - 무설치 기반 웹 브라우저 전체화면 뷰어 지원<br>- 목차 네비게이션 및 스마트 필기(형광펜, 메모장) 기능과 클라우드 실시간 동기화 |
+| **REQ-06** | 보안 | 안티 캡처 시스템 | - 뷰어 진입 시 마우스 우클릭 및 시스템 클립보드 복사(Ctrl+C) 차단<br>- 화면 캡처, 녹화 프로그램, 인쇄 단축키 원천 제어 및 포커스 아웃 시 블랙아웃 처리<br>- 백그라운드에 사용자 고유 이메일/학번 사선 워터마크 CSS 동적 렌더링 |
+
+---
+
+## 5. 시스템 아키텍처 및 기술 표준 🛠️
+
+### 5.1 웹 표준 및 가용성 기술 (비기능 요구사항)
+- **웹 표준 준수**: Active-X 등 별도의 플러그인 설치 요구를 완전히 배제하고 HTML5 / CSS3 웹 표준 브라우저에서 즉시 구동됩니다.
+- **N-Screen 최적화**: 반응형 웹 UI를 적용하여 스마트폰, 태블릿, PC 등 접속 기기의 해상도에 맞춰 화면 레이아웃이 유동적으로 변화합니다.
+- **성능 및 보안**: 동시 접속자가 급증하는 시험 기간에 대응하기 위해 클라우드 스케일링을 고려하였으며, 페이지 최초 로딩 3초 이내 달성 및 HTTPS 전 구간 암호화를 준수합니다.
+
+### 4.2 핵심 서비스 및 보안 로직
+- **구독 권한 제어 엔진**: 요금제별 접근 권한을 자동 제어하며, 학기 종료일 기준 잔여 이용일을 실시간 계산하고 사용자의 모든 필기 데이터를 서버와 실시간 동기화합니다.
+- **DRM 보안 인프라**: 상용 DRM 솔루션을 API로 연동하고 서버 측 토큰(Token) 인증 방식을 도입하여 비정상적인 접근 및 콘텐츠 불법 유출을 차단합니다.
+
+---
+
+## 6. 15주 차 웹서비스 구축 로드맵 📅
+
+본 프로젝트는 총 15주간의 체계적인 공정을 거쳐 설계 및 개발되었습니다.
+
+---
+
+## 🌐 배포된 웹사이트
 
 [https://id-preview--ad2a82b2-e78b-4414-86da-1aaac03fc1d2.lovable.app](https://id-preview--ad2a82b2-e78b-4414-86da-1aaac03fc1d2.lovable.app/?__lovable_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9%2EeyJ1c2VyX2lkIjoiVGNJNFJWd2pFY2E3YkFQVm54dHljdHhjYmY4MiIsInByb2plY3RfaWQiOiJhZDJhODJiMi1lNzhiLTQ0MTQtODZkYS0xYWFhYzAzZmMxZDIiLCJhY2Nlc3NfdHlwZSI6InByb2plY3QiLCJpc3MiOiJsb3ZhYmxlLWFwaSIsInN1YiI6ImFkMmE4MmIyLWU3OGItNDQxNC04NmRhLTFhYWFjMDNmYzFkMiIsImF1ZCI6WyJsb3ZhYmxlLWFwcCJdLCJleHAiOjE3ODEyMzY3MjMsIm5iZiI6MTc4MDYzMTkyMywiaWF0IjoxNzgwNjMxOTIzfQ%2EJR0CQO5PxO1jPiqip21XBw9GCOXvh13N6qh2PNQhF-7sSKR09I3VkkJJLUlDAEDAcplcaZE0_SJBsyBzMSUe7ejpJPPSP-YVX9Fqdy1eHqO67Oik3oCw4a2awQJfgKlRYrxsxCR04sjtEZQFATVwXenw5pAAgYuv2i0Zc3tTgHj6O8CaLzT1lyGHDlaBmB6UihPOV1vl896SXWrWcdEHm-3cWu-a5jY4emY1lCb9sv0ybCS4Yv-fv-DgHD6rCVzYieVt4CSK5zoi-f4Sek39T_raUFes6t4-ZknEiIW17fgxyF6JBV7zUEyhr0rmCv2d4RJxC738Gu-WUbMPT8hilcfk4ev2vKiKOOpmjd_mKzAJScOY5kZJGgyv1AU4yDBgK4ZSi9eiqN4buHk2w1KqTtJDi60dh8yx5Vy_k_n2dmQJZdhQR_csX3zksAMDpR2OUvMYm2iRetEp8IDuy2npKHPo_dVJ8vZaHEY0zFL04iXmCQJVIIo0b2r8a-uH2yb0mLFKUw0Sv_7uThtDnEg4osjV0M6gse3_s_W6OLK1iQl9rdjILoQ1o_asTu4Qcok60AxqH34GIXp_vePAAFoDhr67vYyLyoonfXXtlnagXPhWrPyLNahqWoMlnKwawNNF54ZKGm6ICuAREl8NP0SeoCImbph8oMrw8xX4NVwsHYM)
-
----
-
-## 📁 파일 목록
-
-| 파일명 | 설명 |
-|---|---|
-| `2024664010_김지우_명세서.docx` | 요구사항 명세서 (Word) |
-| `2024664010_김지우_요구사항명세서.pdf` | 요구사항 명세서 (PDF) |
-| `2024664010_김지우_웹서비스플랫폼기획서.pdf` | 웹서비스 플랫폼 기획서 (PDF) |
-| `작업정리.md` | 수업 중 진행한 작업 내역 정리 |
-
----
-
-## 👤 팀원
-
-- 성현욱
-- 강동협
-- 김지우
