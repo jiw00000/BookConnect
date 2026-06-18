@@ -3,331 +3,544 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KSU 글로컬 컬쳐 허브 — GitHub 프로젝트 소개</title>
+<title>BookConnect — 주요 기능 소개</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Pretendard',sans-serif;background:#0a0a14;color:#f1f5f9;overflow:hidden;height:100vh;}
+body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#060612;color:#f1f5f9;overflow:hidden;height:100vh;}
 .slides{width:100%;height:100vh;position:relative;}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;transform:translateX(60px);}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:52px 64px;opacity:0;pointer-events:none;transition:opacity .45s ease,transform .45s ease;transform:translateX(50px);}
 .slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
-.slide.prev{opacity:0;transform:translateX(-60px);}
+.slide.prev{opacity:0;transform:translateX(-50px);}
 
-/* 공통 배경 */
-.slide-1{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);}
-.slide-2,.slide-4,.slide-6{background:linear-gradient(135deg,#0a0a14,#1a1a2e);}
-.slide-3,.slide-5,.slide-7{background:linear-gradient(135deg,#0d1117,#161b22);}
-.slide-8{background:linear-gradient(135deg,#0d1117,#161b22);}
-.slide-9{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);}
+/* 배경 */
+.bg-1{background:linear-gradient(135deg,#0f0c29 0%,#1a1040 50%,#0d0d1f 100%);}
+.bg-2{background:linear-gradient(135deg,#080c1a 0%,#0f1628 100%);}
+.bg-3{background:linear-gradient(135deg,#0d1117 0%,#111827 100%);}
 
-/* 슬라이드 1 — 타이틀 */
-.tag{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#818cf8;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.3);padding:6px 18px;border-radius:20px;margin-bottom:28px;}
-.main-title{font-size:62px;font-weight:800;text-align:center;line-height:1.15;background:linear-gradient(135deg,#818cf8,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
-.sub-title{font-size:22px;color:#94a3b8;text-align:center;margin-bottom:40px;}
-.url-badge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 28px;font-size:14px;color:#64748b;display:flex;align-items:center;gap:10px;}
-.url-badge a{color:#818cf8;text-decoration:none;font-weight:600;}
-.meta{display:flex;gap:24px;margin-top:32px;}
-.meta-item{text-align:center;}
-.meta-item .num{font-size:32px;font-weight:800;color:#818cf8;}
-.meta-item .label{font-size:12px;color:#64748b;margin-top:4px;}
+/* 공통 헤더 */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#818cf8;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.25);padding:5px 14px;border-radius:20px;margin-bottom:22px;}
+.main-title{font-size:58px;font-weight:800;text-align:center;line-height:1.15;background:linear-gradient(135deg,#a5b4fc,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;}
+.sub-title{font-size:20px;color:#94a3b8;text-align:center;line-height:1.6;}
 
-/* 슬라이드 제목 */
-.slide-header{width:100%;max-width:900px;margin-bottom:40px;}
-.slide-num{font-size:12px;color:#4f46e5;font-weight:700;letter-spacing:2px;margin-bottom:8px;}
-.slide-title{font-size:40px;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.slide-line{width:60px;height:3px;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:2px;margin-top:12px;}
+.slide-header{width:100%;max-width:960px;margin-bottom:32px;}
+.slide-num{font-size:11px;color:#4f46e5;font-weight:700;letter-spacing:3px;margin-bottom:6px;}
+.slide-title{font-size:38px;font-weight:800;background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.slide-sub{font-size:15px;color:#64748b;margin-top:6px;}
+.slide-line{width:50px;height:3px;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:2px;margin-top:10px;}
 
-/* 카드 그리드 */
-.grid{display:grid;gap:16px;width:100%;max-width:900px;}
-.grid-2{grid-template-columns:1fr 1fr;}
-.grid-3{grid-template-columns:1fr 1fr 1fr;}
-.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;transition:transform .2s;}
-.card:hover{transform:translateY(-2px);}
-.card-icon{font-size:28px;margin-bottom:12px;}
+/* 카드 */
+.grid{display:grid;gap:14px;width:100%;max-width:960px;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px 24px;transition:border-color .2s,transform .2s;}
+.card:hover{border-color:rgba(129,140,248,.35);transform:translateY(-2px);}
+.card-icon{font-size:26px;margin-bottom:10px;}
+.card-label{font-size:11px;font-weight:700;letter-spacing:2px;color:#4f46e5;text-transform:uppercase;margin-bottom:6px;}
 .card-title{font-size:15px;font-weight:700;color:#e2e8f0;margin-bottom:8px;}
-.card-desc{font-size:13px;color:#64748b;line-height:1.7;}
+.card-desc{font-size:13px;color:#64748b;line-height:1.75;}
+.card-accent{border-left:3px solid #818cf8;}
 
-/* 폴더 트리 */
-.tree{font-family:'SF Mono','Fira Code',monospace;font-size:14px;line-height:2;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 32px;width:100%;max-width:900px;}
-.tree-item{display:flex;align-items:center;gap:8px;}
-.tree-item .icon{font-size:16px;}
-.tree-item .name{color:#e2e8f0;}
-.tree-item .comment{color:#475569;font-size:12px;}
-.tree-folder{color:#818cf8;font-weight:600;}
+/* 배지/태그 */
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700;}
+.b-purple{background:rgba(129,140,248,.15);color:#818cf8;border:1px solid rgba(129,140,248,.25);}
+.b-green{background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.2);}
+.b-orange{background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
+.b-pink{background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.2);}
+.b-red{background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.2);}
 
-/* 기술 배지 */
-.tech-grid{display:flex;flex-wrap:wrap;gap:12px;max-width:900px;}
-.tech-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;}
-.dot{width:8px;height:8px;border-radius:50%;}
-.dot-blue{background:#818cf8;}
-.dot-green{background:#34d399;}
-.dot-orange{background:#fb923c;}
-.dot-pink{background:#f472b6;}
+/* 플랜 카드 */
+.plan-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;max-width:960px;}
+.plan{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;text-align:center;}
+.plan.featured{border-color:rgba(129,140,248,.5);background:rgba(129,140,248,.08);}
+.plan-name{font-size:16px;font-weight:800;color:#e2e8f0;margin-bottom:4px;}
+.plan-books{font-size:28px;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.plan-unit{font-size:12px;color:#64748b;margin-top:2px;}
+.plan-badge{margin-top:12px;}
 
-/* API 테이블 */
-.api-table{width:100%;max-width:900px;border-collapse:collapse;}
-.api-table th{background:rgba(79,70,229,.2);color:#818cf8;font-size:13px;padding:12px 16px;text-align:left;font-weight:700;}
-.api-table td{padding:11px 16px;font-size:13px;color:#94a3b8;border-bottom:1px solid rgba(255,255,255,.05);}
-.api-table tr:last-child td{border-bottom:none;}
-.method{display:inline-block;padding:2px 10px;border-radius:5px;font-size:11px;font-weight:700;}
-.get{background:rgba(52,211,153,.15);color:#34d399;}
-.post{background:rgba(129,140,248,.15);color:#818cf8;}
-.put{background:rgba(251,191,36,.15);color:#fbbf24;}
-.del{background:rgba(248,113,113,.15);color:#f87171;}
+/* 기능 흐름 */
+.flow{display:flex;align-items:center;gap:10px;width:100%;max-width:960px;flex-wrap:wrap;}
+.flow-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:12px 18px;font-size:13px;font-weight:600;color:#e2e8f0;}
+.flow-arrow{color:#475569;font-size:18px;flex-shrink:0;}
+
+/* 보안 블록 */
+.sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:960px;}
+.sec-item{display:flex;gap:14px;align-items:flex-start;background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.12);border-radius:12px;padding:18px 20px;}
+.sec-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.sec-title{font-size:14px;font-weight:700;color:#e2e8f0;margin-bottom:5px;}
+.sec-desc{font-size:12px;color:#64748b;line-height:1.65;}
+
+/* 뷰어 블록 */
+.viewer-row{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;width:100%;max-width:960px;align-items:start;}
+.viewer-screen{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px 24px;}
+.viewer-screen-title{font-size:12px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:14px;text-transform:uppercase;}
+.toolbar{display:flex;gap:8px;margin-bottom:14px;}
+.tb{padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(255,255,255,.06);color:#94a3b8;}
+.tb.active{background:rgba(129,140,248,.2);color:#818cf8;}
+.text-lines{display:flex;flex-direction:column;gap:6px;}
+.text-line{height:10px;border-radius:4px;background:rgba(255,255,255,.06);}
+.hl{background:rgba(251,191,36,.2);position:relative;}
+.hl::after{content:'형광펜';position:absolute;right:-2px;top:-18px;font-size:9px;color:#fbbf24;font-weight:700;}
+.note-pin{display:inline-flex;align-items:center;gap:4px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);border-radius:4px;padding:4px 8px;font-size:10px;color:#fbbf24;font-weight:600;margin-top:8px;}
+.viewer-features{display:flex;flex-direction:column;gap:10px;}
+
+/* 히어로 배경 파티클 */
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;}
+.orb1{width:400px;height:400px;background:#4f46e5;top:-100px;right:-100px;}
+.orb2{width:300px;height:300px;background:#7c3aed;bottom:-80px;left:-80px;}
+.orb3{width:200px;height:200px;background:#c026d3;top:50%;right:20%;}
 
 /* 네비 */
-.nav{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:12px 24px;backdrop-filter:blur(10px);}
-.nav button{background:none;border:none;color:#64748b;cursor:pointer;font-size:18px;transition:color .2s;padding:4px 8px;}
+.nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;background:rgba(15,15,30,.8);border:1px solid rgba(255,255,255,.08);border-radius:50px;padding:10px 22px;backdrop-filter:blur(12px);}
+.nav button{background:none;border:none;color:#64748b;cursor:pointer;font-size:16px;transition:color .2s;padding:4px 8px;line-height:1;}
 .nav button:hover{color:#818cf8;}
-.nav-dots{display:flex;gap:8px;}
-.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s;}
-.nav-dot.active{background:#818cf8;transform:scale(1.3);}
-.slide-counter{font-size:13px;color:#475569;min-width:44px;text-align:center;}
+.nav-dots{display:flex;gap:7px;}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;transition:all .2s;}
+.nav-dot.active{background:#818cf8;transform:scale(1.35);}
+.slide-counter{font-size:12px;color:#475569;min-width:40px;text-align:center;}
+.hint{position:fixed;top:18px;right:20px;font-size:10px;color:#2d3748;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:6px;padding:5px 10px;}
 
-/* 키보드 힌트 */
-.hint{position:fixed;top:20px;right:24px;font-size:11px;color:#334155;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:6px 12px;}
+/* 마지막 */
+.end-emoji{font-size:68px;margin-bottom:18px;animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.link-btn{display:flex;align-items:center;gap:10px;background:rgba(129,140,248,.12);border:1px solid rgba(129,140,248,.3);border-radius:12px;padding:14px 26px;font-size:14px;font-weight:700;color:#818cf8;text-decoration:none;margin-top:20px;transition:all .2s;}
+.link-btn:hover{background:rgba(129,140,248,.22);}
 
-/* 마지막 슬라이드 */
-.end-emoji{font-size:72px;margin-bottom:20px;animation:float 3s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.github-link{display:flex;align-items:center;gap:10px;background:rgba(129,140,248,.15);border:1px solid rgba(129,140,248,.3);border-radius:14px;padding:16px 28px;font-size:15px;font-weight:700;color:#818cf8;text-decoration:none;margin-top:24px;transition:all .2s;}
-.github-link:hover{background:rgba(129,140,248,.25);}
 /* 인쇄/PDF */
-@media print {
-  @page { size: 16in 9in; margin: 0; }
-  body { overflow: hidden; height: 9in; width: 16in; background: #0a0a14; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .slides { height: 9in; width: 16in; position: static; }
-  .slide { position: relative !important; opacity: 1 !important; pointer-events: all !important; transform: none !important; width: 16in; height: 9in; page-break-after: always; break-after: page; display: flex !important; }
-  .nav, .hint { display: none !important; }
+@media print{
+  @page{size:16in 9in;margin:0;}
+  body{overflow:hidden;height:9in;width:16in;background:#060612;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .slides{height:9in;width:16in;position:static;}
+  .slide{position:relative !important;opacity:1 !important;pointer-events:all !important;transform:none !important;width:16in;height:9in;page-break-after:always;break-after:page;display:flex !important;}
+  .nav,.hint{display:none !important;}
 }
 </style>
 </head>
 <body>
 <div class="slides">
 
-<!-- SLIDE 1: 타이틀 -->
-<div class="slide slide-1 active" id="s1">
-  <div class="tag">📚 웹플랫폼응용 프로젝트</div>
+<!-- ============ SLIDE 1: 타이틀 ============ -->
+<div class="slide bg-1 active" id="s1">
+  <div class="hero-bg"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+  <div class="chip">📚 웹플랫폼응용 프로젝트 · 2024664010 김지우</div>
   <div class="main-title">BookConnect</div>
-  <div class="sub-title">전공 e서적 학기 구독 플랫폼</div>
-  <div class="url-badge">🔗 GitHub: <a href="https://github.com/jiw00000/BookConnect" target="_blank">github.com/jiw00000/BookConnect</a></div>
-</div>
-
-<!-- SLIDE 2: README 소개 -->
-<div class="slide slide-2" id="s2">
-  <div class="slide-header">
-    <div class="slide-num">01 / 08</div>
-    <div class="slide-title">README 소개</div>
-    <div class="slide-line"></div>
-  </div>
-  <div style="max-width:900px;width:100%">
-    <div class="card" style="margin-bottom:20px;border-left:3px solid #818cf8;padding:28px 32px">
-      <div style="font-size:18px;font-weight:700;color:#e2e8f0;margin-bottom:14px;line-height:1.5">📚 BookConnect: 전공 e서적 학기 구독 플랫폼</div>
-      <div style="font-size:14px;color:#94a3b8;line-height:1.9">
-        <strong style="color:#c084fc">대학생의 전공 서적 구매 부담을 완화</strong>하고 효율적인 디지털 도서 공유 생태계를 구축하는<br>
-        웹 기반 <strong style="color:#818cf8">학기 단위 구독 플랫폼</strong>입니다.
-      </div>
-    </div>
-    <div class="grid grid-2">
-      <div class="card">
-        <div class="card-icon">❌</div>
-        <div class="card-title">기존 문제 (AS-IS)</div>
-        <div class="card-desc">전공 서적 권당 평균 <strong style="color:#f87171">40,000원 이상</strong> 고가<br>도서관 대출 경쟁 심화 및 기간 제한<br>무거운 실물 도서 지참 불편</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">✅</div>
-        <div class="card-title">서비스 해결책 (TO-BE)</div>
-        <div class="card-desc"><strong style="color:#34d399">학기 단위 구독 모델</strong>로 비용 절감<br>수량 제한 없는 디지털 E북 환경<br>멀티 디바이스 N-Screen 지원</div>
-      </div>
-    </div>
+  <div class="sub-title">전공 e서적 학기 구독 플랫폼<br><span style="font-size:15px;color:#475569;margin-top:8px;display:block">주요 기능 소개</span></div>
+  <div style="display:flex;gap:12px;margin-top:36px;flex-wrap:wrap;justify-content:center;">
+    <span class="badge b-purple">🔐 재학생 인증</span>
+    <span class="badge b-green">💳 학기 구독</span>
+    <span class="badge b-orange">📚 e북 탐색</span>
+    <span class="badge b-pink">✏️ 스마트 뷰어</span>
+    <span class="badge b-red">🛡️ DRM 보안</span>
   </div>
 </div>
 
-<!-- SLIDE 3: 프로젝트 개요 -->
-<div class="slide slide-3" id="s3">
+<!-- ============ SLIDE 2: 서비스 개요 ============ -->
+<div class="slide bg-2" id="s2">
   <div class="slide-header">
-    <div class="slide-num">02 / 08</div>
-    <div class="slide-title">프로젝트 개요</div>
+    <div class="slide-num">01 / 09</div>
+    <div class="slide-title">왜 BookConnect인가?</div>
+    <div class="slide-sub">대학 전공 서적의 구조적 문제를 디지털 구독으로 해결합니다</div>
     <div class="slide-line"></div>
   </div>
-  <div class="grid grid-2">
-    <div class="card">
-      <div class="card-icon">🎯</div>
-      <div class="card-title">목적</div>
-      <div class="card-desc">경성대학교 학생과 교직원을 위한 문화 교류 플랫폼. 전용 혜택, 이벤트, 커뮤니티, 글로벌 파트너 연계 기능 제공</div>
+  <div class="grid g2">
+    <div class="card" style="border-color:rgba(248,113,113,.2);background:rgba(248,113,113,.04);">
+      <div class="card-label" style="color:#f87171;">기존 문제 (AS-IS)</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">💸</span><div><div style="font-size:14px;font-weight:700;color:#fca5a5;margin-bottom:2px;">과도한 비용 부담</div><div style="font-size:12px;color:#64748b">전공 서적 권당 평균 40,000원 이상, 매 학기 반복 구매</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">📚</span><div><div style="font-size:14px;font-weight:700;color:#fca5a5;margin-bottom:2px;">도서관 자원 한계</div><div style="font-size:12px;color:#64748b">한정 수량, 시험 기간 대출 경쟁, 짧은 반납 기간</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">🎒</span><div><div style="font-size:14px;font-weight:700;color:#fca5a5;margin-bottom:2px;">학습 편의성 저하</div><div style="font-size:12px;color:#64748b">무거운 실물 도서 지참, 필기 및 형광펜 불가</div></div></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">👥</div>
-      <div class="card-title">대상 사용자</div>
-      <div class="card-desc">경성대학교 재학생(student), 교직원(staff), 플랫폼 관리자(admin) — @ks.ac.kr 이메일 기반 인증</div>
+    <div class="card" style="border-color:rgba(52,211,153,.2);background:rgba(52,211,153,.04);">
+      <div class="card-label" style="color:#34d399;">BookConnect 해결책 (TO-BE)</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">💳</span><div><div style="font-size:14px;font-weight:700;color:#6ee7b7;margin-bottom:2px;">학기 단위 구독 요금제</div><div style="font-size:12px;color:#64748b">4단계 플랜으로 합리적 비용 절감, 개별 구매 불필요</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">♾️</span><div><div style="font-size:14px;font-weight:700;color:#6ee7b7;margin-bottom:2px;">수량 제한 없는 디지털 열람</div><div style="font-size:12px;color:#64748b">도서관 대출 경쟁 없이 플랜 내 자유 열람 보장</div></div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px">📱</span><div><div style="font-size:14px;font-weight:700;color:#6ee7b7;margin-bottom:2px;">멀티 디바이스 N-Screen</div><div style="font-size:12px;color:#64748b">PC·태블릿·모바일 어디서나, 디지털 필기·동기화</div></div></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🌐</div>
-      <div class="card-title">배포 플랫폼</div>
-      <div class="card-desc">프론트엔드: Lovable (자동 배포)<br>백엔드: Vercel Serverless</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 3: 기능 구조 개요 ============ -->
+<div class="slide bg-3" id="s3">
+  <div class="slide-header">
+    <div class="slide-num">02 / 09</div>
+    <div class="slide-title">구현된 주요 기능 6가지</div>
+    <div class="slide-sub">BookConnect가 제공하는 핵심 기능 전체 구조</div>
+    <div class="slide-line"></div>
+  </div>
+  <div class="grid g3">
+    <div class="card card-accent">
+      <div class="card-icon">🔐</div>
+      <div class="card-title">REQ-01 회원 관리 & 인증</div>
+      <div class="card-desc">.ac.kr 이메일 인증 가입<br>역할 기반 접근 제어</div>
     </div>
-    <div class="card">
+    <div class="card" style="border-left:3px solid #34d399;">
+      <div class="card-icon">💳</div>
+      <div class="card-title">REQ-02 학기 구독 결제</div>
+      <div class="card-desc">4단계 플랜 선택·결제<br>플랜별 열람 권한 자동 제어</div>
+    </div>
+    <div class="card" style="border-left:3px solid #fb923c;">
+      <div class="card-icon">📊</div>
+      <div class="card-title">REQ-03 대시보드 & 서재</div>
+      <div class="card-desc">구독 현황 D-Day 시각화<br>도서별 진도율 프로그레스 바</div>
+    </div>
+    <div class="card" style="border-left:3px solid #f472b6;">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">REQ-04 통합 서적 탐색</div>
+      <div class="card-desc">제목·저자·카테고리 필터<br>도서 상세 페이지 & 서재 추가</div>
+    </div>
+    <div class="card" style="border-left:3px solid #a78bfa;">
+      <div class="card-icon">📖</div>
+      <div class="card-title">REQ-05 스마트 e북 뷰어</div>
+      <div class="card-desc">무설치 전체화면 HTML5 뷰어<br>형광펜·메모 클라우드 동기화</div>
+    </div>
+    <div class="card" style="border-left:3px solid #f87171;">
+      <div class="card-icon">🛡️</div>
+      <div class="card-title">REQ-06 DRM 보안</div>
+      <div class="card-desc">우클릭·복사·캡처 차단<br>사용자 식별 워터마크</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 4: REQ-01 회원 인증 ============ -->
+<div class="slide bg-2" id="s4">
+  <div class="slide-header">
+    <div class="slide-num">03 / 09</div>
+    <div class="slide-title">REQ-01 · 회원 관리 & 재학생 인증</div>
+    <div class="slide-sub">대학교 이메일 기반 신뢰 인증 시스템</div>
+    <div class="slide-line"></div>
+  </div>
+  <div style="display:flex;gap:20px;width:100%;max-width:960px;align-items:flex-start;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
+      <div class="card card-accent">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-size:20px">📧</span><div class="card-title" style="margin:0">이메일 도메인 검증</div></div>
+        <div class="card-desc">가입 시 <strong style="color:#818cf8">@ks.ac.kr (경성대)</strong> 또는 <strong style="color:#818cf8">.ac.kr</strong> 도메인 자동 검증으로 재학생 신분 확인</div>
+      </div>
+      <div class="card card-accent">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-size:20px">👤</span><div class="card-title" style="margin:0">역할 기반 접근 제어</div></div>
+        <div class="card-desc">가입 후 역할(Role) 자동 부여<br><span class="badge b-purple" style="margin-top:6px;font-size:11px">student</span> <span class="badge b-orange" style="margin-top:6px;font-size:11px">admin</span> — 각 역할별 페이지 접근 권한 분리</div>
+      </div>
+      <div class="card card-accent">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-size:20px">🔑</span><div class="card-title" style="margin:0">JWT 기반 보안 인증</div></div>
+        <div class="card-desc">로그인 후 JWT 토큰 발급, 모든 API 요청 시 서버 측 토큰 검증으로 비인가 접근 차단</div>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div class="card" style="background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.08);">
+        <div style="font-size:11px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:16px;">SIGN UP FLOW</div>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:0;">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);">
+            <span style="font-size:20px;width:32px;text-align:center">1️⃣</span>
+            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">이메일 입력</div><div style="font-size:11px;color:#64748b">.ac.kr 도메인 유효성 실시간 검사</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);">
+            <span style="font-size:20px;width:32px;text-align:center">2️⃣</span>
+            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">개인정보 입력</div><div style="font-size:11px;color:#64748b">학번·이름·비밀번호 유효성 검사</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);">
+            <span style="font-size:20px;width:32px;text-align:center">3️⃣</span>
+            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">역할 부여</div><div style="font-size:11px;color:#64748b">student / admin 자동 분류 및 DB 저장</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;">
+            <span style="font-size:20px;width:32px;text-align:center">4️⃣</span>
+            <div><div style="font-size:13px;font-weight:700;color:#34d399">로그인 & JWT 발급</div><div style="font-size:11px;color:#64748b">세션 관리 및 보호된 라우트 접근</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 5: REQ-02 구독 플랜 ============ -->
+<div class="slide bg-3" id="s5">
+  <div class="slide-header">
+    <div class="slide-num">04 / 09</div>
+    <div class="slide-title">REQ-02 · 학기 구독 결제 & 권한 제어</div>
+    <div class="slide-sub">4단계 학기 단위 요금제 — 목적에 맞는 합리적 선택</div>
+    <div class="slide-line"></div>
+  </div>
+  <div class="plan-row">
+    <div class="plan">
+      <div class="plan-name">Single</div>
+      <div class="plan-books">1</div>
+      <div class="plan-unit">권 · 학기</div>
+      <div class="plan-badge"><span class="badge b-green" style="font-size:11px;">단일 과목용</span></div>
+      <div style="font-size:12px;color:#64748b;margin-top:12px;">특정 1과목 교재만 집중적으로 필요한 경우</div>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Basic</div>
+      <div class="plan-books">3</div>
+      <div class="plan-unit">권 · 학기</div>
+      <div class="plan-badge"><span class="badge b-orange" style="font-size:11px;">선택 과목 보조</span></div>
+      <div style="font-size:12px;color:#64748b;margin-top:12px;">필수 외 선택 과목 몇 가지를 추가로 수강하는 경우</div>
+    </div>
+    <div class="plan featured">
+      <div style="font-size:10px;font-weight:700;color:#818cf8;letter-spacing:2px;margin-bottom:6px;">POPULAR</div>
+      <div class="plan-name">Standard</div>
+      <div class="plan-books">6</div>
+      <div class="plan-unit">권 · 학기</div>
+      <div class="plan-badge"><span class="badge b-purple" style="font-size:11px;">전공 핵심 과목</span></div>
+      <div style="font-size:12px;color:#64748b;margin-top:12px;">일반적인 전공 학기 구성에 최적화된 추천 플랜</div>
+    </div>
+    <div class="plan" style="border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.06);">
+      <div class="plan-name">Premium</div>
+      <div class="plan-books">∞</div>
+      <div class="plan-unit">무제한 · 학기</div>
+      <div class="plan-badge"><span class="badge b-pink" style="font-size:11px;">전 도서 무제한</span></div>
+      <div style="font-size:12px;color:#64748b;margin-top:12px;">제약 없이 모든 전공 서적에 자유롭게 접근</div>
+    </div>
+  </div>
+  <div class="card" style="max-width:960px;width:100%;margin-top:14px;padding:16px 22px;flex-direction:row;display:flex;gap:20px;align-items:center;">
+    <span style="font-size:20px">⚙️</span>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:3px;">플랜별 권한 자동 제어 엔진</div>
+      <div style="font-size:12px;color:#64748b;">구독 플랜에 따라 열람 가능 권수 초과 자동 차단 · 학기 종료일 기준 만료 처리 · 잔여 이용일 실시간 계산</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 6: REQ-03 대시보드 ============ -->
+<div class="slide bg-2" id="s6">
+  <div class="slide-header">
+    <div class="slide-num">05 / 09</div>
+    <div class="slide-title">REQ-03 · 대시보드 & 내 서재</div>
+    <div class="slide-sub">학습 현황을 한눈에 파악하는 스마트 서재 관리</div>
+    <div class="slide-line"></div>
+  </div>
+  <div class="grid g3">
+    <div class="card" style="border-left:3px solid #fb923c;">
       <div class="card-icon">📅</div>
-      <div class="card-title">프로젝트 기간</div>
-      <div class="card-desc">2026년 03월 ~ 06월<br>학번: 2024664010</div>
+      <div class="card-title">구독 D-Day 시각화</div>
+      <div class="card-desc">현재 구독 플랜(예: Standard)과 학기 종료일까지 남은 일수를 실시간으로 계산하여 대시보드 상단에 표시</div>
+    </div>
+    <div class="card" style="border-left:3px solid #818cf8;">
+      <div class="card-icon">📈</div>
+      <div class="card-title">도서별 진도율 시각화</div>
+      <div class="card-desc">현재 열람 중인 도서마다 진도율(%)을 프로그레스 바 UI로 표시. 마지막 읽은 페이지 위치 저장</div>
+    </div>
+    <div class="card" style="border-left:3px solid #34d399;">
+      <div class="card-icon">☁️</div>
+      <div class="card-title">클라우드 동기화</div>
+      <div class="card-desc">진도율 및 스마트 필기 데이터를 서버에 자동 저장. 다른 기기에서 접속해도 이어보기 즉시 가능</div>
     </div>
   </div>
-</div>
-
-<!-- SLIDE 4: 레포 구조 -->
-<div class="slide slide-4" id="s4">
-  <div class="slide-header">
-    <div class="slide-num">03 / 08</div>
-    <div class="slide-title">GitHub 레포 구조</div>
-    <div class="slide-line"></div>
-  </div>
-  <img src="docs/github-repo-screenshot.png"
-       alt="GitHub BookConnect 레포 구조"
-       style="max-width:860px;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 40px rgba(0,0,0,.5);">
-</div>
-
-<!-- SLIDE 5: 기술 스택 -->
-<div class="slide slide-5" id="s5">
-  <div class="slide-header">
-    <div class="slide-num">04 / 08</div>
-    <div class="slide-title">기술 스택</div>
-    <div class="slide-line"></div>
-  </div>
-  <div class="tech-grid" style="margin-bottom:28px">
-    <div style="font-size:13px;color:#475569;width:100%;font-weight:700;letter-spacing:1px;">FRONTEND</div>
-    <div class="tech-badge"><span class="dot dot-blue"></span>Lovable</div>
-    <div class="tech-badge"><span class="dot dot-blue"></span>HTML5</div>
-  </div>
-  <div class="tech-grid">
-    <div style="font-size:13px;color:#475569;width:100%;font-weight:700;letter-spacing:1px;">BACKEND</div>
-    <div class="tech-badge"><span class="dot dot-orange"></span>Vercel</div>
-  </div>
-</div>
-
-<!-- SLIDE 6: Vercel 배포 -->
-<div class="slide slide-6" id="s6">
-  <div class="slide-header">
-    <div class="slide-num">05 / 08</div>
-    <div class="slide-title">Vercel 백엔드 배포</div>
-    <div class="slide-line"></div>
-  </div>
-  <div style="max-width:900px;width:100%">
-    <div class="tree" style="margin-bottom:24px;font-size:14px;line-height:2.2;padding:24px 32px">
-      <div style="color:#475569;font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:16px">DEPLOYMENT FLOW</div>
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="background:rgba(129,140,248,.15);border:1px solid rgba(129,140,248,.3);border-radius:8px;padding:8px 18px;color:#818cf8;font-weight:700">📁 GitHub push</span>
-        <span style="color:#475569;font-size:22px">→</span>
-        <span style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);border-radius:8px;padding:8px 18px;color:#34d399;font-weight:700">⚡ Vercel 자동 빌드</span>
-        <span style="color:#475569;font-size:22px">→</span>
-        <span style="background:rgba(251,146,60,.15);border:1px solid rgba(251,146,60,.3);border-radius:8px;padding:8px 18px;color:#fb923c;font-weight:700">🌐 Serverless API</span>
+  <div class="card" style="max-width:960px;width:100%;margin-top:14px;background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.06);">
+    <div style="font-size:11px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:14px;">DASHBOARD PREVIEW</div>
+    <div style="display:flex;gap:12px;">
+      <div style="flex:1;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:14px;">
+        <div style="font-size:11px;color:#fb923c;font-weight:700;margin-bottom:4px;">현재 플랜</div>
+        <div style="font-size:20px;font-weight:800;color:#e2e8f0">Standard</div>
+        <div style="font-size:12px;color:#64748b;margin-top:2px">D-47 남음</div>
+      </div>
+      <div style="flex:2;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;">
+        <div style="font-size:11px;color:#818cf8;font-weight:700;margin-bottom:10px;">내 서재 진도율</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">알고리즘 개론</span><span style="font-size:12px;color:#818cf8;font-weight:700">78%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:linear-gradient(90deg,#818cf8,#c084fc);border-radius:3px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">운영체제론</span><span style="font-size:12px;color:#34d399;font-weight:700">45%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:45%;height:100%;background:linear-gradient(90deg,#34d399,#059669);border-radius:3px;"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">데이터베이스</span><span style="font-size:12px;color:#fb923c;font-weight:700">12%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:12%;height:100%;background:linear-gradient(90deg,#fb923c,#ea580c);border-radius:3px;"></div></div></div>
+        </div>
       </div>
     </div>
-    <div class="tree" style="font-size:13px;line-height:2.2;padding:22px 28px">
-      <div style="color:#475569;font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:8px">backend/vercel.json</div>
-      <div><span style="color:#34d399">"builds"</span>: [{ <span style="color:#818cf8">"src"</span>: <span style="color:#f472b6">"server.js"</span>, <span style="color:#818cf8">"use"</span>: <span style="color:#f472b6">"@vercel/node"</span> }]</div>
-      <div><span style="color:#34d399">"routes"</span>: [{ <span style="color:#818cf8">"src"</span>: <span style="color:#f472b6">"/(.*)"</span>, <span style="color:#818cf8">"dest"</span>: <span style="color:#f472b6">"server.js"</span> }]</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 7: REQ-04 탐색 ============ -->
+<div class="slide bg-3" id="s7">
+  <div class="slide-header">
+    <div class="slide-num">06 / 09</div>
+    <div class="slide-title">REQ-04 · 전공 e서적 통합 탐색</div>
+    <div class="slide-sub">원하는 전공 서적을 빠르게 찾고 내 서재에 추가</div>
+    <div class="slide-line"></div>
+  </div>
+  <div style="display:flex;gap:20px;width:100%;max-width:960px;align-items:flex-start;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
+      <div class="card" style="border-left:3px solid #f472b6;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:20px">🔍</span><div class="card-title" style="margin:0">통합 검색 필터</div></div>
+        <div class="card-desc">제목 · 저자 · 카테고리 3가지 기준으로 동시 필터링, 결과 정렬(최신순/인기순) 지원</div>
+      </div>
+      <div class="card" style="border-left:3px solid #f472b6;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:20px">📋</span><div class="card-title" style="margin:0">도서 상세 페이지</div></div>
+        <div class="card-desc">표지·저자·출판사·목차 미리보기 제공, <strong style="color:#f472b6">구독 플랜 내 남은 열람 가능 권수</strong>를 실시간 표시</div>
+      </div>
+      <div class="card" style="border-left:3px solid #f472b6;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:20px">➕</span><div class="card-title" style="margin:0">내 서재 추가 로직</div></div>
+        <div class="card-desc">버튼 클릭으로 즉시 내 서재에 추가, 권한 초과 시 업그레이드 안내 팝업 자동 표시</div>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div class="card" style="background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.07);">
+        <div style="font-size:11px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:14px;">SEARCH UI PREVIEW</div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="font-size:14px">🔍</span>
+          <span style="font-size:13px;color:#475569">"알고리즘" 검색 중...</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+          <span class="badge b-pink" style="font-size:11px;cursor:pointer">전체</span>
+          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">컴퓨터공학</span>
+          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">소프트웨어</span>
+          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">수학</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,114,182,.15);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">알고리즘 개론</div><div style="font-size:11px;color:#64748b">홍길동 저 · 컴퓨터공학</div></div>
+            <span style="font-size:11px;background:rgba(244,114,182,.15);color:#f472b6;padding:4px 8px;border-radius:5px;font-weight:700">+ 추가</span>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">자료구조와 알고리즘</div><div style="font-size:11px;color:#64748b">김철수 저 · 소프트웨어</div></div>
+            <span style="font-size:11px;background:rgba(100,116,139,.1);color:#64748b;padding:4px 8px;border-radius:5px;font-weight:700">서재에 있음</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 7: API -->
-<div class="slide slide-7" id="s7">
+<!-- ============ SLIDE 8: REQ-05 e북 뷰어 ============ -->
+<div class="slide bg-2" id="s8">
   <div class="slide-header">
-    <div class="slide-num">06 / 08</div>
-    <div class="slide-title">주요 API 엔드포인트</div>
+    <div class="slide-num">07 / 09</div>
+    <div class="slide-title">REQ-05 · 스마트 e북 뷰어 & 필기 동기화</div>
+    <div class="slide-sub">무설치 브라우저 기반 전체화면 뷰어, 형광펜·메모 클라우드 동기화</div>
     <div class="slide-line"></div>
   </div>
-  <table class="api-table">
-    <thead>
-      <tr><th>그룹</th><th>Method</th><th>Endpoint</th><th>설명</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Auth</td><td><span class="method post">POST</span></td><td>/api/auth/register</td><td>회원가입 (@ks.ac.kr 이메일 검증)</td></tr>
-      <tr><td>Auth</td><td><span class="method post">POST</span></td><td>/api/auth/login</td><td>로그인 → JWT 발급</td></tr>
-      <tr><td>Subs</td><td><span class="method post">POST</span></td><td>/api/subscriptions/pay</td><td>학기 단위 구독 요금제 결제</td></tr>
-      <tr><td>Subs</td><td><span class="method get">GET</span></td><td>/api/subscriptions/me</td><td>현재 구독 현황 및 권한 조회</td></tr>
-      <tr><td>Books</td><td><span class="method get">GET</span></td><td>/api/books</td><td>전공 e서적 카테고리 필터 통합 검색</td></tr>
-      <tr><td>Books</td><td><span class="method get">GET</span></td><td>/api/books/:id</td><td>도서 상세 정보 조회</td></tr>
-      <tr><td>Library</td><td><span class="method get">GET</span></td><td>/api/library</td><td>내 서재 도서 목록 및 진도율 조회</td></tr>
-      <tr><td>Library</td><td><span class="method post">POST</span></td><td>/api/library/:id/sync</td><td>진도율 및 스마트 필기 클라우드 동기화</td></tr>
-    </tbody>
-  </table>
+  <div class="viewer-row">
+    <div class="viewer-screen">
+      <div class="viewer-screen-title">e-BOOK VIEWER</div>
+      <div class="toolbar">
+        <span class="tb active">형광펜</span>
+        <span class="tb">메모</span>
+        <span class="tb">목차</span>
+        <span class="tb">전체화면</span>
+      </div>
+      <div class="text-lines">
+        <div class="text-line" style="width:95%"></div>
+        <div class="text-line hl" style="width:88%"></div>
+        <div class="text-line hl" style="width:92%"></div>
+        <div class="text-line" style="width:75%"></div>
+        <div class="text-line" style="width:85%"></div>
+        <div class="text-line" style="width:90%"></div>
+        <div class="text-line" style="width:60%"></div>
+      </div>
+      <div class="note-pin">📌 메모: 이 부분 시험 출제 예상</div>
+      <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:11px;color:#64748b">Chapter 3 / 12</span>
+        <div style="height:5px;flex:1;margin:0 10px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:35%;height:100%;background:linear-gradient(90deg,#818cf8,#c084fc);border-radius:3px;"></div></div>
+        <span style="font-size:11px;color:#818cf8;font-weight:700">35%</span>
+      </div>
+    </div>
+    <div class="viewer-features">
+      <div class="card" style="border-left:3px solid #a78bfa;">
+        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-size:18px">📺</span><div><div class="card-title" style="margin-bottom:4px">전체화면 HTML5 뷰어</div><div class="card-desc">별도 프로그램 설치 없이 브라우저에서 즉시 전체화면 모드 구동</div></div></div>
+      </div>
+      <div class="card" style="border-left:3px solid #a78bfa;">
+        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-size:18px">📑</span><div><div class="card-title" style="margin-bottom:4px">목차 네비게이션</div><div class="card-desc">챕터 목록 패널에서 원하는 섹션으로 즉시 이동, 현재 위치 하이라이트</div></div></div>
+      </div>
+      <div class="card" style="border-left:3px solid #fbbf24;background:rgba(251,191,36,.04);">
+        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-size:18px">✏️</span><div><div class="card-title" style="margin-bottom:4px">스마트 필기 & 동기화</div><div class="card-desc">형광펜 색상 선택 · 메모 작성·수정·삭제<br>필기 데이터 실시간 클라우드 저장, 기기 전환 시 즉시 복원</div></div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- SLIDE 8: 프론트엔드 페이지 구성 -->
-<div class="slide slide-8" id="s8">
+<!-- ============ SLIDE 9: REQ-06 DRM 보안 ============ -->
+<div class="slide bg-3" id="s9">
   <div class="slide-header">
-    <div class="slide-num">07 / 08</div>
-    <div class="slide-title">프론트엔드 페이지 구성</div>
+    <div class="slide-num">08 / 09</div>
+    <div class="slide-title">REQ-06 · DRM 보안 & 저작권 보호</div>
+    <div class="slide-sub">뷰어 진입 시 자동 작동하는 3중 보안 시스템</div>
     <div class="slide-line"></div>
   </div>
-  <div class="grid grid-3">
-    <div class="card"><div class="card-icon">🏠</div><div class="card-title">Home.jsx</div><div class="card-desc">메인 랜딩 페이지</div></div>
-    <div class="card"><div class="card-icon">🔐</div><div class="card-title">Login.jsx</div><div class="card-desc">로그인 페이지</div></div>
-    <div class="card"><div class="card-icon">📝</div><div class="card-title">Register.jsx</div><div class="card-desc">재학생 이메일 가입</div></div>
-    <div class="card"><div class="card-icon">📊</div><div class="card-title">Dashboard.jsx</div><div class="card-desc">내 서재 대시보드 (진도율 파악)</div></div>
-    <div class="card"><div class="card-icon">💳</div><div class="card-title">Subscriptions.jsx</div><div class="card-desc">구독 플랜 선택 및 결제</div></div>
-    <div class="card"><div class="card-icon">🔍</div><div class="card-title">Books.jsx</div><div class="card-desc">전공 e서적 통합 탐색</div></div>
-    <div class="card"><div class="card-title">📚</div><div class="card-title">Library.jsx</div><div class="card-desc">현재 대출/구독 중인 도서 목록</div></div>
-    <div class="card"><div class="card-icon">👤</div><div class="card-title">Profile.jsx</div><div class="card-desc">마이페이지 및 구독 관리</div></div>
-    <div class="card"><div class="card-icon">📖</div><div class="card-title">BookViewer.jsx</div><div class="card-desc">무설치 스마트 e북 뷰어</div></div>
+  <div class="sec-grid">
+    <div class="sec-item">
+      <div class="sec-icon">🚫</div>
+      <div>
+        <div class="sec-title">우클릭 & 복사 차단</div>
+        <div class="sec-desc">뷰어 영역 내 마우스 우클릭 비활성화<br>Ctrl+C / Ctrl+A 키보드 단축키 이벤트 차단<br>시스템 클립보드 복사 원천 차단</div>
+      </div>
+    </div>
+    <div class="sec-item">
+      <div class="sec-icon">📸</div>
+      <div>
+        <div class="sec-title">화면 캡처 & 녹화 방지</div>
+        <div class="sec-desc">Print Screen · Win+Shift+S 단축키 이벤트 감지 및 차단<br>화면 녹화 프로그램 작동 감지 시 뷰어 콘텐츠 블랙아웃 처리</div>
+      </div>
+    </div>
+    <div class="sec-item">
+      <div class="sec-icon">🔲</div>
+      <div>
+        <div class="sec-title">포커스 아웃 블랙아웃</div>
+        <div class="sec-desc">브라우저 탭 전환 또는 창 포커스 해제 시<br>뷰어 콘텐츠 자동 블랙아웃 (화면 완전 가림)<br>재포커스 시 인증 후 복원</div>
+      </div>
+    </div>
+    <div class="sec-item">
+      <div class="sec-icon">🔖</div>
+      <div>
+        <div class="sec-title">사용자 식별 워터마크</div>
+        <div class="sec-desc">뷰어 배경에 사용자 이메일 + 학번 사선 텍스트를 CSS 동적 생성 렌더링<br>불법 유출 시 원본 사용자 추적 가능</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="max-width:960px;width:100%;margin-top:14px;padding:14px 20px;flex-direction:row;display:flex;gap:14px;align-items:center;border-color:rgba(248,113,113,.2);">
+    <span style="font-size:20px">🛡️</span>
+    <div style="font-size:12px;color:#64748b;">모든 보안 기능은 e북 뷰어(<code style="color:#f87171;background:rgba(248,113,113,.1);padding:1px 6px;border-radius:4px;">BookViewer.jsx</code>) 진입 시 자동 활성화되며, 뷰어 종료 시 자동 해제됩니다.</div>
   </div>
 </div>
 
-<!-- SLIDE 9: 마무리 -->
-<div class="slide slide-9" id="s9">
-  <div class="end-emoji">🎓</div>
-  <div class="main-title" style="font-size:48px;">감사합니다</div>
-  <div class="sub-title" style="margin-top:12px;">2024664010 김지우 | 웹플랫폼응용</div>
-  <a class="github-link" href="https://github.com/jiw00000/BookConnect" target="_blank">
-    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+<!-- ============ SLIDE 10: 마무리 ============ -->
+<div class="slide bg-1" id="s10">
+  <div class="hero-bg"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+  <div class="end-emoji">📚</div>
+  <div class="main-title" style="font-size:46px;">감사합니다</div>
+  <div class="sub-title" style="margin-top:8px;">2024664010 김지우 · 웹플랫폼응용</div>
+  <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center;">
+    <span class="badge b-purple">🔐 REQ-01 회원 인증</span>
+    <span class="badge b-green">💳 REQ-02 학기 구독</span>
+    <span class="badge b-orange">📊 REQ-03 대시보드</span>
+    <span class="badge b-pink">🔍 REQ-04 서적 탐색</span>
+    <span class="badge" style="background:rgba(167,139,250,.12);color:#a78bfa;border:1px solid rgba(167,139,250,.25)">📖 REQ-05 e북 뷰어</span>
+    <span class="badge b-red">🛡️ REQ-06 DRM 보안</span>
+  </div>
+  <a class="link-btn" href="https://github.com/jiw00000/BookConnect" target="_blank">
+    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
     github.com/jiw00000/BookConnect
   </a>
-
 </div>
 
-</div><!-- end slides -->
+</div><!-- /slides -->
 
 <!-- 네비게이션 -->
 <div class="nav">
   <button onclick="go(-1)">◀</button>
   <div class="nav-dots" id="dots"></div>
   <button onclick="go(1)">▶</button>
-  <div class="slide-counter" id="counter">1 / 9</div>
+  <div class="slide-counter" id="counter">1 / 10</div>
 </div>
-<div class="hint">← → 키 또는 버튼으로 이동</div>
+<div class="hint">← → 키로 이동</div>
 
 <script>
-const total = 9;
+const total = 10;
 let cur = 1;
 const dotsEl = document.getElementById('dots');
 const counterEl = document.getElementById('counter');
-
-// 점 생성
 for(let i=1;i<=total;i++){
-  const d = document.createElement('div');
+  const d=document.createElement('div');
   d.className='nav-dot'+(i===1?' active':'');
   d.onclick=()=>goTo(i);
   dotsEl.appendChild(d);
 }
-
 function goTo(n){
-  const prev = document.getElementById('s'+cur);
-  prev.classList.remove('active');
-  prev.classList.add('prev');
-  setTimeout(()=>prev.classList.remove('prev'),500);
+  const prev=document.getElementById('s'+cur);
+  prev.classList.remove('active');prev.classList.add('prev');
+  setTimeout(()=>prev.classList.remove('prev'),450);
   cur=n;
   document.getElementById('s'+cur).classList.add('active');
   document.querySelectorAll('.nav-dot').forEach((d,i)=>d.classList.toggle('active',i===cur-1));
   counterEl.textContent=cur+' / '+total;
 }
-
-function go(dir){
-  const n=cur+dir;
-  if(n<1||n>total)return;
-  goTo(n);
-}
-
+function go(dir){const n=cur+dir;if(n<1||n>total)return;goTo(n);}
 document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);
   if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);
