@@ -262,43 +262,9 @@ body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#06061
     <div class="slide-sub">4단계 학기 단위 요금제 — 목적에 맞는 합리적 선택</div>
     <div class="slide-line"></div>
   </div>
-  <div class="plan-row">
-    <div class="plan">
-      <div class="plan-name">Single</div>
-      <div class="plan-books">1</div>
-      <div class="plan-unit">권 · 학기</div>
-      <div class="plan-badge"><span class="badge b-green" style="font-size:11px;">단일 과목용</span></div>
-      <div style="font-size:12px;color:#64748b;margin-top:12px;">특정 1과목 교재만 집중적으로 필요한 경우</div>
-    </div>
-    <div class="plan">
-      <div class="plan-name">Basic</div>
-      <div class="plan-books">3</div>
-      <div class="plan-unit">권 · 학기</div>
-      <div class="plan-badge"><span class="badge b-orange" style="font-size:11px;">선택 과목 보조</span></div>
-      <div style="font-size:12px;color:#64748b;margin-top:12px;">필수 외 선택 과목 몇 가지를 추가로 수강하는 경우</div>
-    </div>
-    <div class="plan featured">
-      <div style="font-size:10px;font-weight:700;color:#818cf8;letter-spacing:2px;margin-bottom:6px;">POPULAR</div>
-      <div class="plan-name">Standard</div>
-      <div class="plan-books">6</div>
-      <div class="plan-unit">권 · 학기</div>
-      <div class="plan-badge"><span class="badge b-purple" style="font-size:11px;">전공 핵심 과목</span></div>
-      <div style="font-size:12px;color:#64748b;margin-top:12px;">일반적인 전공 학기 구성에 최적화된 추천 플랜</div>
-    </div>
-    <div class="plan" style="border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.06);">
-      <div class="plan-name">Premium</div>
-      <div class="plan-books">∞</div>
-      <div class="plan-unit">무제한 · 학기</div>
-      <div class="plan-badge"><span class="badge b-pink" style="font-size:11px;">전 도서 무제한</span></div>
-      <div style="font-size:12px;color:#64748b;margin-top:12px;">제약 없이 모든 전공 서적에 자유롭게 접근</div>
-    </div>
-  </div>
-  <div class="card" style="max-width:960px;width:100%;margin-top:14px;padding:16px 22px;flex-direction:row;display:flex;gap:20px;align-items:center;">
-    <span style="font-size:20px">⚙️</span>
-    <div>
-      <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:3px;">플랜별 권한 자동 제어 엔진</div>
-      <div style="font-size:12px;color:#64748b;">구독 플랜에 따라 열람 가능 권수 초과 자동 차단 · 학기 종료일 기준 만료 처리 · 잔여 이용일 실시간 계산</div>
-    </div>
+  <div style="display:flex;gap:16px;width:100%;max-width:960px;">
+    <img src="docs/screen-plans.png" alt="구독 플랜 선택 화면" style="flex:1.4;min-width:0;border-radius:10px;border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.5);object-fit:cover;">
+    <img src="docs/screen-payment.png" alt="결제 모달" style="flex:1;min-width:0;border-radius:10px;border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.5);object-fit:cover;">
   </div>
 </div>
 
@@ -327,24 +293,7 @@ body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#06061
       <div class="card-desc">진도율 및 스마트 필기 데이터를 서버에 자동 저장. 다른 기기에서 접속해도 이어보기 즉시 가능</div>
     </div>
   </div>
-  <div class="card" style="max-width:960px;width:100%;margin-top:14px;background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.06);">
-    <div style="font-size:11px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:14px;">DASHBOARD PREVIEW</div>
-    <div style="display:flex;gap:12px;">
-      <div style="flex:1;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);border-radius:10px;padding:14px;">
-        <div style="font-size:11px;color:#fb923c;font-weight:700;margin-bottom:4px;">현재 플랜</div>
-        <div style="font-size:20px;font-weight:800;color:#e2e8f0">Standard</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px">D-47 남음</div>
-      </div>
-      <div style="flex:2;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;">
-        <div style="font-size:11px;color:#818cf8;font-weight:700;margin-bottom:10px;">내 서재 진도율</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">알고리즘 개론</span><span style="font-size:12px;color:#818cf8;font-weight:700">78%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:linear-gradient(90deg,#818cf8,#c084fc);border-radius:3px;"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">운영체제론</span><span style="font-size:12px;color:#34d399;font-weight:700">45%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:45%;height:100%;background:linear-gradient(90deg,#34d399,#059669);border-radius:3px;"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;color:#94a3b8">데이터베이스</span><span style="font-size:12px;color:#fb923c;font-weight:700">12%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:12%;height:100%;background:linear-gradient(90deg,#fb923c,#ea580c);border-radius:3px;"></div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <img src="docs/screen-dashboard.png" alt="대시보드 실제 화면" style="max-width:960px;width:100%;margin-top:14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.5);">
 </div>
 
 <!-- ============ SLIDE 7: REQ-04 탐색 ============ -->
@@ -371,29 +320,7 @@ body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:#06061
       </div>
     </div>
     <div style="flex:1;">
-      <div class="card" style="background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.07);">
-        <div style="font-size:11px;font-weight:700;color:#475569;letter-spacing:2px;margin-bottom:14px;">SEARCH UI PREVIEW</div>
-        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <span style="font-size:14px">🔍</span>
-          <span style="font-size:13px;color:#475569">"알고리즘" 검색 중...</span>
-        </div>
-        <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
-          <span class="badge b-pink" style="font-size:11px;cursor:pointer">전체</span>
-          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">컴퓨터공학</span>
-          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">소프트웨어</span>
-          <span class="badge" style="background:rgba(255,255,255,.05);color:#64748b;border-color:rgba(255,255,255,.08);font-size:11px">수학</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(244,114,182,.15);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
-            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">알고리즘 개론</div><div style="font-size:11px;color:#64748b">홍길동 저 · 컴퓨터공학</div></div>
-            <span style="font-size:11px;background:rgba(244,114,182,.15);color:#f472b6;padding:4px 8px;border-radius:5px;font-weight:700">+ 추가</span>
-          </div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;">
-            <div><div style="font-size:13px;font-weight:700;color:#e2e8f0">자료구조와 알고리즘</div><div style="font-size:11px;color:#64748b">김철수 저 · 소프트웨어</div></div>
-            <span style="font-size:11px;background:rgba(100,116,139,.1);color:#64748b;padding:4px 8px;border-radius:5px;font-weight:700">서재에 있음</span>
-          </div>
-        </div>
-      </div>
+      <img src="docs/screen-books.png" alt="서적 탐색 실제 화면" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 24px rgba(0,0,0,.5);">
     </div>
   </div>
 </div>
