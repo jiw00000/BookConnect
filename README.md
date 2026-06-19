@@ -90,4 +90,4 @@
 
 ## 🌐 배포된 웹사이트
 
-https://lovable.dev/projects/ad2a82b2-e78b-4414-86da-1aaac03fc1d2
+https://book-connect-uni.lovable.app/
